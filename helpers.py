@@ -20,10 +20,11 @@ def segment_hand(frame, delta=10):
     # Apply thresholding segmentation
     ret,thresholded = cv2.threshold(skin_region,0,255,cv2.THRESH_BINARY)
     # Find contours around the thresholded regions
-    contours, hierarchy = cv2.findContours(thresh, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+    contours, hierarchy = cv2.findContours(thresholded, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
     contours = max(contours, key=lambda x: cv2.contourArea(x))
     # Apply convex hull algorithm
     convex_hull = cv2.convexHull(contours)
     # Decide the area of contours (with delta relaxation)
+    min_x, max_x, min_y, max_y = min(convex_hull[:,:,0])[0], max(convex_hull[:,:,0])[0],min(convex_hull[:,:,1])[0],max(convex_hull[:,:,1])[0]
     roi = [max(0,min_y-delta), min(max_y+delta, frame.shape[0]), max(0,min_x-delta), min(max_x+delta,frame.shape[1])]
     return roi
