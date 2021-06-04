@@ -1,2 +1,4 @@
 # Sign-Language-Detection
-Computer Vision and Deep learning Project where a sign language is detected in a live video.
+This is an ongoing computer vision and deep learning project. A hand region is extracted and tracked in a video and the sign language of this hand is recognized.
+
+
