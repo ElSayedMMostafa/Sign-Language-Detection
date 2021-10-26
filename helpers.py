@@ -11,7 +11,7 @@ def segment_hand(frame, delta=10):
         roi: The region of interest which includes the hand
     """
     # Skin color limits
-    lower_limit = np.array([0,40,40], dtype=np.uint8)
+    lower_limit = np.array([10,40,40], dtype=np.uint8)
     upper_limit = np.array([20,255,255], dtype=np.uint8)
     # Convert color to HSV domain
     img = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
